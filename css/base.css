@@ -1,0 +1,93 @@
+body {
+  background-color: #181818;
+  font-weight: 500;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  color: #aaaaaa;
+  padding: 40px;
+}
+
+input {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 10px;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description-container p {
+  text-align: justify;
+  max-width: 750px;
+}
+
+h1 {
+  line-height: 1.2em;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+h1, h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+}
+
+.option-groups {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+}
+
+button {
+  background: #282828;
+  color: #aaaaaa;
+  border: none;
+}
+
+.submit-button-container button {
+  background: #282828;
+  color: #aaaaaa;
+  padding: 15px;
+  border: none;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #181818;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  text-align: center;
+  padding: 25px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.popup-buttons button {
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 10px 15px;
+}
