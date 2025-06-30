@@ -10,9 +10,11 @@ function deChanged(input) {
   switch (input.value) {
   case 'catacomb':
     enableCheckboxes([
-      'comp-catacomb', 'osk-squeekboard', 'launcher-tzompantli', 'panel-epitaph', 'wp-tabula',
-      'browser-kumo', 'terminal-alacritty', 'clock-catacomb', 'camera-megapixels',
-      'misc-swayidle', 'misc-grim', 'misc-wfrecorder',
+      'comp-catacomb', 'osk-squeekboard', 'launcher-tzompantli', 'panel-epitaph', 'misc-swayidle',
+    ], true);
+    enableCheckboxes([
+      'wp-tabula', 'browser-kumo', 'terminal-alacritty', 'clock-catacomb', 'camera-megapixels',
+      'misc-grim', 'misc-wfrecorder',
     ], false);
     break;
   case 'sxmo':
@@ -58,6 +60,9 @@ function selected_packages() {
 
   // Add DE packages which cannot be freely selected.
   switch (document.querySelector('input[name=de]:checked').value) {
+  case 'catacomb':
+    packages.push('catacomb-meta-git', 'tremor-git', 'tinydm');
+    break;
   case 'sxmo':
     packages.push('danctnix-sxmo-ui-meta', 'sxmo-utils-sway', 'glibc-locales');
     break;
@@ -81,7 +86,6 @@ function selected_packages() {
       'xdg-desktop-portal-kde', 'xdg-user-dirs',
     );
     break;
-  case 'catacomb':
   case 'none':
   default:
     break;
