@@ -61,7 +61,7 @@ function selected_packages() {
   // Add DE packages which cannot be freely selected.
   switch (document.querySelector('input[name=de]:checked').value) {
   case 'catacomb':
-    packages.push('catacomb-meta-git', 'tremor-git', 'tinydm');
+    packages.push('catacomb-meta', 'tremor', 'tinydm');
     break;
   case 'sxmo':
     packages.push('danctnix-sxmo-ui-meta', 'sxmo-utils-sway', 'glibc-locales');
