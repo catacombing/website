@@ -35,7 +35,7 @@ function deChanged(input) {
   case 'plasma':
     enableCheckboxes(['osk-maliit'], true);
     enableCheckboxes([
-      'browser-angelfish', 'terminal-qmlkonsole', 'editor-maui', 'clock-klock', 'calls-plasma',
+      'browser-angelfish', 'terminal-qmlkonsole', 'editor-maui', 'clock-kclock', 'calls-plasma',
       'sms-spacebar', 'camera-megapixels', 'music-elisa', 'img-koko', 'fm-indexfm',
     ], false);
     break;
