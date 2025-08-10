@@ -14,7 +14,7 @@ function deChanged(input) {
     ], true);
     enableCheckboxes([
       'wp-tabula', 'browser-kumo', 'terminal-alacritty', 'clock-catacomb', 'camera-megapixels',
-      'misc-grim', 'misc-wfrecorder', 'misc-pinax',
+      'misc-grim', 'misc-wfrecorder', 'misc-pinax', 'misc-gorm',
     ], false);
     break;
   case 'sxmo':
