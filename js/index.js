@@ -129,9 +129,10 @@ async function checkRequestStatus(device, md5sum) {
   const status = await get_status(device, md5sum);
 
   // Open correct popup based on current request state.
-  switch (status) {
+  switch (status?.status) {
   case 'done':
     document.getElementById('download-popup').style.display = 'flex';
+    document.getElementById('img-md5sum').innerHTML = status.img_md5sum;
     break;
   case 'pending':
   case 'building':
@@ -156,7 +157,7 @@ async function submit() {
 
   // Redirect to show popups.
   const status = await get_status(device, md5sum);
-  switch (status) {
+  switch (status?.status) {
   case 'done':
   case 'pending':
   case 'building':
