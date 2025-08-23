@@ -143,10 +143,15 @@ a:hover {
     }
 }
 
+@media (min-width:1001px)  {
+    #applications-intro {
+        padding-bottom: 50px;
+    }
+}
+
 .application {
     display: flex;
     align-items: center;
-    padding: 50px 0;
 }
 
 .application img {
