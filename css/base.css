@@ -52,6 +52,12 @@ a:hover {
     margin: 0 auto 0 auto;
 }
 
+@media (max-width:1000px)  {
+    .section {
+      padding: 25px;
+    }
+}
+
 #header {
     display: flex;
     align-items: center;
@@ -146,6 +152,12 @@ a:hover {
 .application img {
     border: 5px solid #752a2a;
     width: 300px;
+}
+
+@media (max-width:750px)  {
+    .application img {
+        width: 200px;
+    }
 }
 
 .application-img-left img {
