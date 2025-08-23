@@ -8,249 +8,184 @@
     applications for mobile Linux platforms like the PinePhone. All applications
     are optimized to run on low-end hardware with a limited battery life.">
     <link rel="stylesheet" href="../css/base.css" type="text/css" media="all">
-    <script type="text/javascript" src="../js/md5.js"></script>
   </head>
   <body>
-    <div class="description-container">
-      <h1>Archlinux ARM Image Creator</h1>
-      <p>
-        This page allows you to create your own custom Archlinux ARM image for
-        use with the PinePhone (Pro). Images are compiled on demand and should be
-        ready in 5-10 minutes with an empty build queue.
-      </p>
+    <div id="header">
+      <a id="logo" href="./">Catacomb</a>
+      <ul id="nav">
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#applications">Applications</a></li>
+        <li><a href="https://github.com/catacombing" target="_blank">Source</a></li>
+      </ul>
     </div>
 
-    <div class="option-groups">
+    <div id="about" class="section">
       <div>
-        <h3>Device</h3>
-        <input type="radio" id="device-pinephone-pro" name="device" value="pinephone-pro" checked="checked">
-        <label for="de-pinephone-pro">PinePhone Pro</label><br>
-        <input type="radio" id="device-pinephone" name="device" value="pinephone">
-        <label for="de-pinephone">PinePhone</label><br>
-      </div>
-
-      <div>
-        <h3>Desktop Environment</h3>
-        <input type="radio" id="de-none" name="de" value="none" onChange="deChanged(this)" checked="checked">
-        <label for="de-none">None</label><br>
-        <input type="radio" id="de-catacomb" name="de" value="catacomb" onChange="deChanged(this)">
-        <label for="de-catacomb">Catacomb</label><br>
-        <input type="radio" id="de-sxmo" name="de" value="sxmo" onChange="deChanged(this)">
-        <label for="de-sxmo">Simple X Mobile</label><br>
-        <input type="radio" id="de-phosh" name="de" value="phosh" onChange="deChanged(this)">
-        <label for="de-phosh">Phosh</label><br>
-        <input type="radio" id="de-plasma" name="de" value="plasma" onChange="deChanged(this)">
-        <label for="de-plasma">Plasma Mobile</label><br>
-      </div>
-
-      <div>
-        <h3>Audio</h3>
-        <input type="radio" id="audio-pipewire" name="audio" value="pipewire" checked="checked">
-        <label for="audio-pipewire">Pipewire</label><br>
-        <input type="radio" id="audio-pulse" name="audio" value="pulseaudio">
-        <label for="audio-pulse">Pulseaudio</label><br>
-      </div>
-
-      <div>
-        <h3>Compositor</h3>
-        <input type="checkbox" id="comp-catacomb" name="comp-catacomb" value="catacomb">
-        <label for="comp-catacomb">Catacomb</label><br>
-        <input type="checkbox" id="comp-sway" name="comp-sway" value="sway">
-        <label for="comp-sway">Sway</label><br>
-      </div>
-
-      <div>
-        <h3>On-Screen Keyboard</h3>
-        <input type="checkbox" id="osk-squeekboard" name="osk-squeekboard" value="squeekboard">
-        <label for="osk-squeekboard">Squeekboard</label><br>
-        <input type="checkbox" id="osk-wvkbd" name="osk-wvkbd" value="wvkbd">
-        <label for="osk-wvkbd">Wvkbd</label><br>
-        <input type="checkbox" id="osk-maliit" name="osk-maliit" value="maliit-keyboard">
-        <label for="osk-maliit">Maliit</label><br>
-      </div>
-
-      <div>
-        <h3>Application Launcher</h3>
-        <input type="checkbox" id="launcher-tzompantli" name="launcher-tzompantli" value="tzompantli">
-        <label for="launcher-tzompantli">Tzompantli</label><br>
-        <input type="checkbox" id="launcher-bemenu" name="launcher-bemenu" value="bemenu-wayland">
-        <label for="launcher-bemenu">Bemenu</label><br>
-      </div>
-
-      <div>
-        <h3>Panel</h3>
-        <input type="checkbox" id="panel-epitaph" name="panel-epitaph" value="epitaph">
-        <label for="panel-epitaph">Epitaph</label><br>
-      </div>
-
-      <div>
-        <h3>Wallpaper</h3>
-        <input type="checkbox" id="wp-tabula" name="wp-tabula" value="tabula">
-        <label for="wp-tabula">Tabula</label><br>
-        <input type="checkbox" id="wp-swaybg" name="wp-swaybg" value="swaybg">
-        <label for="wp-swaybg">Swaybg</label><br>
-      </div>
-
-      <div>
-        <h3>Browser</h3>
-        <input type="checkbox" id="browser-kumo" name="browser-kumo" value="kumo ffmpeg">
-        <label for="browser-kumo">Kumo</label><br>
-        <input type="checkbox" id="browser-ff-mobile" name="browser-ff-mobile" value="mobile-config-firefox">
-        <label for="browser-ff-mobile">Firefox Mobile</label><br>
-        <input type="checkbox" id="browser-ff" name="browser-ff" value="firefox">
-        <label for="browser-ff">Firefox</label><br>
-        <input type="checkbox" id="browser-angelfish" name="browser-angelfish" value="angelfish">
-        <label for="browser-angelfish">Angelfish</label><br>
-      </div>
-
-      <div>
-        <h3>Terminal</h3>
-        <input type="checkbox" id="terminal-alacritty" name="terminal-alacritty" value="alacritty">
-        <label for="terminal-alacritty">Alacritty</label><br>
-        <input type="checkbox" id="terminal-foot" name="terminal-foot" value="foot">
-        <label for="terminal-foot">Foot</label><br>
-        <input type="checkbox" id="terminal-gnome" name="terminal-gnome" value="gnome-console">
-        <label for="terminal-gnome">Gnome Console</label><br>
-        <input type="checkbox" id="terminal-qmlkonsole" name="terminal-qmlkonsole" value="qmlkonsole">
-        <label for="terminal-qmlkonsole">QMLKonsole</label><br>
-      </div>
-
-      <div>
-        <h3>Editor</h3>
-        <input type="checkbox" id="editor-vim" name="editor-vim" value="vim">
-        <label for="editor-vim">Vim</label><br>
-        <input type="checkbox" id="editor-neovim" name="editor-neovim" value="neovim">
-        <label for="editor-neovim">NeoVim</label><br>
-        <input type="checkbox" id="editor-emacs" name="editor-emacs" value="emacs">
-        <label for="editor-emacs">Emacs</label><br>
-        <input type="checkbox" id="editor-gnome" name="editor-gnome" value="gnome-text-editor">
-        <label for="editor-gnome">Gnome Text Editor</label><br>
-        <input type="checkbox" id="editor-maui" name="editor-maui" value="maui-nota">
-        <label for="editor-maui">Maui Nota</label><br>
-        <input type="checkbox" id="editor-nano" name="editor-nano" value="nano">
-        <label for="editor-nano">Nano</label><br>
-      </div>
-
-      <div>
-        <h3>Clock</h3>
-        <input type="checkbox" id="clock-catacomb" name="clock-catacomb" value="catacomb-alarm">
-        <label for="clock-catacomb">Catacomb Alarm</label><br>
-        <input type="checkbox" id="clock-gnome" name="clock-gnome" value="gnome-clocks-mobile">
-        <label for="clock-gnome">Gnome Clocks</label><br>
-        <input type="checkbox" id="clock-kclock" name="clock-kclock" value="kclock">
-        <label for="clock-kclock">Kclock</label><br>
-      </div>
-
-      <div>
-        <h3>Calls</h3>
-        <input type="checkbox" id="calls-gnome" name="calls-gnome" value="gnome-calls">
-        <label for="calls-gnome">Gnome Calls</label><br>
-        <input type="checkbox" id="calls-plasma" name="calls-plasma" value="plasma-dialer">
-        <label for="calls-plasma">Plasma Dialer</label><br>
-      </div>
-
-      <div>
-        <h3>SMS</h3>
-        <input type="checkbox" id="sms-chatty" name="sms-chatty" value="chatty">
-        <label for="sms-chatty">Chatty</label><br>
-        <input type="checkbox" id="sms-spacebar" name="sms-spacebar" value="spacebar">
-        <label for="sms-spacebar">Spacebar</label><br>
-      </div>
-
-      <div>
-        <h3>Camera</h3>
-        <input type="checkbox" id="camera-megapixels" name="camera-megapixels" value="megapixels postprocessd">
-        <label for="editor-megapixels">Megapixels</label><br>
-      </div>
-
-      <div>
-        <h3>Music</h3>
-        <input type="checkbox" id="music-lollypop" name="music-lollypop" value="lollypop">
-        <label for="music-lollypop">Lollypop</label><br>
-        <input type="checkbox" id="music-elisa" name="music-elisa" value="elisa">
-        <label for="music-elisa">Elisa</label><br>
-      </div>
-
-      <div>
-        <h3>Image Viewer</h3>
-        <input type="checkbox" id="img-imv" name="img-imv" value="imv">
-        <label for="img-imv">Imv</label><br>
-        <input type="checkbox" id="img-eog" name="img-eog" value="eog">
-        <label for="img-eog">Eye of Gnome</label><br>
-        <input type="checkbox" id="img-koko" name="img-koko" value="koko">
-        <label for="img-koko">Koko</label><br>
-      </div>
-
-      <div>
-        <h3>File Manager</h3>
-        <input type="checkbox" id="fm-portfolio" name="fm-portfolio" value="portfolio-file-manager">
-        <label for="fm-portfolio">Portfolio</label><br>
-        <input type="checkbox" id="fm-indexfm" name="fm-indexfm" value="index-fm">
-        <label for="fm-indexfm">Index FM</label><br>
-      </div>
-
-      <div>
-        <h3>Maps</h3>
-        <input type="checkbox" id="maps-gnome" name="maps-gnome" value="gnome-maps">
-        <label for="maps-gnome">Gnome Maps</label><br>
-      </div>
-
-      <div>
-        <h3>Other</h3>
-        <input type="checkbox" id="misc-swayidle" name="misc-swayidle" value="swayidle">
-        <label for="misc-swayidle">Swayidle</label><br>
-        <input type="checkbox" id="misc-grim" name="misc-grim" value="grim slurp">
-        <label for="misc-grim">Grim + Slurp</label><br>
-        <input type="checkbox" id="misc-wfrecorder" name="misc-wfrecorder" value="wf-recorder slurp">
-        <label for="misc-wfrecorder">wf-recorder + Slurp</label><br>
-        <input type="checkbox" id="misc-mako" name="misc-mako" value="mako">
-        <label for="misc-mako">Mako</label><br>
-        <input type="checkbox" id="misc-pinax" name="misc-pinax" value="pinax">
-        <label for="misc-pinax">Pinax</label><br>
-        <input type="checkbox" id="misc-gorm" name="misc-gorm" value="gorm">
-        <label for="misc-gorm">Gorm</label><br>
-      </div>
+        <h2>Catacomb - A Wayland Mobile Desktop</h2>
+        <p>
+          Catacomb is a set of Linux Wayland
+          applications for mobile Linux platforms like the PinePhone. All applications
+          are optimized to run on low-end hardware with a limited battery life.
+        </p>
+      </diV>
+      <img id="pinephone" src="../img/pinephone.png" />
     </div>
 
-    <div class="submit-button-container">
-      <button type="button" onclick="submit()">Build Image</button>
-    </div>
-
-    <div id="download-popup" class="popup" style="display: none">
-      <div class="popup-content">
-        <p>Image is ready for download.</p>
-        <p>Compressed image MD5 checksum: <code id="img-md5sum"></code></p>
-        <div class="popup-buttons">
-          <button type="button" onclick="cancelPopup()">Cancel</button>
-          <button type="button" onclick="confirmDownload()">Download</button>
+    <div id="installation">
+      <div class="section">
+        <img src="../img/download.svg" />
+        <div>
+          <h2>Installation</h2>
+          <p>
+            Catacomb can be installed using the following mechanisms:
+          </p>
+          <ul>
+            <li><a href="./builder">
+                ArchLinux ARM image creation tool (recommended)
+            </a></li>
+            <li><a href="https://github.com/catacombing/packaging" target="_blank">
+                ArchLinux ARM custom repository
+            </a></li>
+            <li><a href="https://github.com/catacombing" target="_blank">
+                Compilation from source
+            </a></li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div id="start-build-popup" class="popup" style="display: none">
-      <div class="popup-content">
-        <p>Image does not exist yet, do you want to start a new build?</p>
-        <p>This will take at least 5 minutes, but this site does not need to stay open.</p>
-        <div class="popup-buttons">
-          <button type="button" onclick="cancelPopup()">Cancel</button>
-          <button type="button" onclick="confirmBuild()">Confirm</button>
+    <div id="applications" class="section">
+      <div>
+        <h2>Applications</h2>
+        <p>
+          Catacomb's goal is reusing applications from other desktop
+          environments whenever possible, limiting the development to tools
+          without suitable existing alternatives. All applications written for
+          Catacomb are designed to cohabitate well on any desktop environment.
+        </p>
+
+        <div class="application application-img-left">
+          <a href="https://github.com/catacombing/catacomb" target="_blank">
+            <img src="../img/catacomb.png" />
+          </a>
+          <div>
+            <h2><a href="https://github.com/catacombing/catacomb" target="_blank">
+                Catacomb
+            </a></h2>
+            <p>
+              Catacomb is a Wayland compositor for Linux smartphones. It aims
+              to provide responsive window management without cutting down on
+              useful features.
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div id="pending-popup" class="popup" style="display: none">
-      <div class="popup-content">
-        <p>Waiting for image to build, this could take a while…</p>
-        <p>The page will refresh automatically once the build is complete.</p>
-      </div>
-    </div>
+        <div class="application application-img-right">
+          <div>
+            <h2><a href="https://github.com/catacombing/kumo" target="_blank">
+                Kumo
+            </a></h2>
+            <p>
+              Kumo is a web browser with a UI focused on portrait mode
+              touchscreen mobile devices. It is optimized to run on low-end
+              hardware with a limited battery life.
+            </p>
+          </div>
+          <a href="https://github.com/catacombing/kumo" target="_blank">
+            <img src="../img/kumo.png" />
+          </a>
+        </div>
 
-    <div id="error-popup" class="popup" style="display: none">
-      <div class="popup-content">
-        <p>An unexpected error occurred, please try again at a later time.</p>
+        <div class="application application-img-left">
+          <a href="https://github.com/catacombing/tzompantli" target="_blank">
+            <img src="../img/tzompantli.png" />
+          </a>
+          <div>
+            <h2><a href="https://github.com/catacombing/tzompantli" target="_blank">
+                Tzompantli
+            </a></h2>
+            <p>
+              Tzompantli is a minimal application drawer for phones running Wayland.
+            </p>
+          </div>
+        </div>
+
+        <div class="application application-img-right">
+          <div>
+            <h2><a href="https://github.com/catacombing/epitaph" target="_blank">
+                Epitaph
+            </a></h2>
+            <p>
+              Epitaph is a Wayland panel focused on providing a touch-friendly
+              interface for displaying and controlling commonly accessed OS
+              functionality.
+            </p>
+          </div>
+          <a href="https://github.com/catacombing/epitaph" target="_blank">
+            <img src="../img/epitaph.png" />
+          </a>
+        </div>
+
+        <div class="application application-img-left">
+          <a href="https://github.com/catacombing/gorm" target="_blank">
+            <img src="../img/gorm.png" />
+          </a>
+          <div>
+            <h2><a href="https://github.com/catacombing/gorm" target="_blank">
+                Gorm
+            </a></h2>
+            <p>
+              Gorm is a Wayland application that allows configuring your WiFi
+              connections through a touch friendly and efficient GUI.
+            </p>
+          </div>
+        </div>
+
+        <div class="application application-img-right">
+          <div>
+            <h2><a href="https://github.com/catacombing/pinax" target="_blank">
+                Pinax
+            </a></h2>
+            <p>
+              Pinax is a simple notes application for mobile Wayland systems.
+            </p>
+          </div>
+          <a href="https://github.com/catacombing/pinax" target="_blank">
+            <img src="../img/pinax.png" />
+          </a>
+        </div>
+
+        <div class="application application-img-left">
+          <a href="https://github.com/catacombing/tabula" target="_blank">
+            <img src="../img/tabula.png" />
+          </a>
+          <div>
+            <h2><a href="https://github.com/catacombing/tabula" target="_blank">
+                Tabula
+            </a></h2>
+            <p>
+              Tabula is a minimal Wayland wallpaper tool which aims to provide
+              a better experience on devices with dynamic monitor ratios like
+              phones.
+            </p>
+          </div>
+        </div>
+
+        <div class="application application-img-right">
+          <div>
+            <h2><a href="https://github.com/catacombing/alarm" target="_blank">
+                Alarm
+            </a></h2>
+            <p>
+              Alarm is an alarm clock which automatically handles suspend and
+              reboot with optional logind support.
+            </p>
+          </div>
+          <a href="https://github.com/catacombing/alarm" target="_blank">
+            <img src="../img/alarm.png" />
+          </a>
+        </div>
       </div>
     </div>
   </body>
-
-  <script type="text/javascript" src="../js/index.js"></script>
 </html>

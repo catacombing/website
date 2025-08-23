@@ -4,24 +4,13 @@ body {
   line-height: 1.5em;
   font-size: 1.2em;
   color: #aaaaaa;
-  padding: 40px;
+  margin: 0;
 }
 
 input {
   width: 1.2em;
   height: 1.2em;
   margin-right: 10px;
-}
-
-.description-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.description-container p {
-  text-align: justify;
-  max-width: 750px;
 }
 
 h1 {
@@ -35,61 +24,10 @@ h1, h3 {
   text-decoration-thickness: 0.1em;
 }
 
-.option-groups {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.submit-button-container {
-  display: flex;
-  justify-content: center;
-  padding: 25px;
-}
-
 button {
   background: #282828;
   color: #aaaaaa;
   border: none;
-}
-
-.submit-button-container button {
-  background: #282828;
-  color: #aaaaaa;
-  padding: 15px;
-  border: none;
-  font-size: 1.5em;
-  font-weight: 600;
-}
-
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #181818;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  text-align: center;
-  padding: 25px;
-}
-
-.popup-buttons {
-  display: flex;
-  justify-content: space-around;
-}
-
-.popup-buttons button {
-  font-size: 1.1em;
-  font-weight: 500;
-  padding: 10px 15px;
 }
 
 code {
@@ -97,6 +35,137 @@ code {
   padding: 5px;
 }
 
-#img-md5sum {
-  margin-left: 10px;
+a {
+    color: #aaaaaa;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ac4242;
+    text-decoration: none;
+}
+
+.section {
+    padding: 150px;
+
+    max-width: 1250px;
+    margin: 0 auto 0 auto;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 100px;
+
+    max-width: 1250px;
+    margin: 0 auto 0 auto;
+}
+
+@media (max-width:750px)  {
+    #header {
+        flex-direction: column;
+    }
+}
+
+#nav {
+    display: flex;
+
+    list-style: none;
+    padding: 0;
+}
+
+#nav > li {
+    margin: 0 15px;
+}
+
+#about {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width:1000px)  {
+    #about {
+        flex-direction: column;
+    }
+}
+
+#pinephone {
+    background-image: url("../img/catacomb.png");
+    background-repeat: no-repeat;
+    background-position: 41% 50%;
+    background-size: 90% 86%;
+    margin: 50px 50px 50px 150px;
+    width: 250px;
+}
+
+@media (max-width:1000px)  {
+    #pinephone {
+        margin: 50px;
+    }
+}
+
+#installation {
+    background-color: #282828;
+}
+
+#installation > .section {
+    display: flex;
+    align-items: center;
+}
+
+#installation > .section > img {
+    width: 100px;
+    padding: 50px;
+}
+
+#installation > .section > div {
+    margin-left: 150px;
+}
+
+#installation ul {
+    list-style: square;
+}
+
+@media (max-width:1000px)  {
+    #installation > .section > img {
+        display: none;
+    }
+
+    #installation > .section > div {
+        margin-left: 0;
+    }
+}
+
+.application {
+    display: flex;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.application img {
+    border: 5px solid #752a2a;
+    width: 300px;
+}
+
+.application-img-left img {
+    margin: 0px 150px 0px 50px;
+}
+
+.application-img-right img {
+    margin: 0px 50px 0px 150px;
+}
+
+@media (max-width:1000px)  {
+    .application-img-left {
+        flex-direction: column-reverse;
+    }
+
+    .application-img-right {
+        flex-direction: column;
+    }
+
+    .application img {
+        margin: 50px;
+    }
 }
