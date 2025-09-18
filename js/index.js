@@ -11,10 +11,11 @@ function deChanged(input) {
   case 'catacomb':
     enableCheckboxes([
       'comp-catacomb', 'osk-squeekboard', 'launcher-tzompantli', 'panel-epitaph', 'misc-swayidle',
+      'misc-grim',
     ], true);
     enableCheckboxes([
       'wp-tabula', 'browser-kumo', 'terminal-alacritty', 'clock-catacomb', 'camera-megapixels',
-      'misc-grim', 'misc-wfrecorder', 'misc-pinax', 'misc-gorm',
+      'misc-wfrecorder', 'misc-pinax', 'misc-gorm',
     ], false);
     break;
   case 'sxmo':
