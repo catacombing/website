@@ -73,6 +73,12 @@ a:hover {
     text-decoration: none;
 }
 
+@media (max-width:500px)  {
+    #header {
+        display: none;
+    }
+}
+
 @media (max-width:750px)  {
     #header {
         flex-direction: column;
