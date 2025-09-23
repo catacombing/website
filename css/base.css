@@ -1,43 +1,44 @@
 body {
-  background-color: #181818;
-  font-weight: 500;
-  line-height: 1.5em;
-  font-size: 1.2em;
-  color: #aaaaaa;
-  margin: 0;
+    background-color: #181818;
+    font-weight: 500;
+    line-height: 1.5em;
+    font-size: 1.2em;
+    color: #aaaaaa;
+    margin: 0;
 }
 
 input {
-  width: 1.2em;
-  height: 1.2em;
-  margin-right: 10px;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 10px;
 }
 
 h1 {
-  line-height: 1.2em;
-  font-size: 1.8em;
-  text-align: center;
+    line-height: 1.2em;
+    font-size: 1.8em;
+    text-align: center;
 }
 
 h1, h3 {
-  text-decoration: underline;
-  text-decoration-thickness: 0.1em;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
 }
 
 button {
-  background: #282828;
-  color: #aaaaaa;
-  border: none;
+    background: #282828;
+    color: #aaaaaa;
+    border: none;
 }
 
 code {
-  background: #282828;
-  padding: 5px;
+    background: #282828;
+    padding: 5px;
 }
 
 a {
     color: #aaaaaa;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
 }
 
 a:hover {
@@ -66,6 +67,10 @@ a:hover {
 
     max-width: 1250px;
     margin: 0 auto 0 auto;
+}
+
+#header a {
+    text-decoration: none;
 }
 
 @media (max-width:750px)  {
@@ -111,34 +116,34 @@ a:hover {
     }
 }
 
-#installation {
+.svg-section {
     background-color: #282828;
 }
 
-#installation > .section {
+.svg-section > .section {
     display: flex;
     align-items: center;
 }
 
-#installation > .section > img {
+.svg-section > .section > img {
     width: 100px;
     padding: 50px;
 }
 
-#installation > .section > div {
+.svg-section > .section > div {
     margin-left: 150px;
 }
 
-#installation ul {
+.svg-section ul {
     list-style: square;
 }
 
 @media (max-width:1000px)  {
-    #installation > .section > img {
+    .svg-section > .section > img {
         display: none;
     }
 
-    #installation > .section > div {
+    .svg-section > .section > div {
         margin-left: 0;
     }
 }
