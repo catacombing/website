@@ -25,9 +25,11 @@
       <div>
         <h3>Device</h3>
         <input type="radio" id="device-pinephone-pro" name="device" value="pinephone-pro" checked="checked">
-        <label for="de-pinephone-pro">PinePhone Pro</label><br>
+        <label for="device-pinephone-pro">PinePhone Pro</label><br>
         <input type="radio" id="device-pinephone" name="device" value="pinephone">
-        <label for="de-pinephone">PinePhone</label><br>
+        <label for="device-pinephone">PinePhone</label><br>
+        <input type="radio" id="device-fairphone-fp5" name="device" value="fairphone-fp5">
+        <label for="device-fairphone-fp5">Fairphone 5 <p class="alpha">(alpha)</p></label><br>
       </div>
 
       <div>
@@ -225,6 +227,76 @@
           <button type="button" onclick="cancelPopup()">Cancel</button>
           <button type="button" onclick="confirmDownload()">Download</button>
         </div>
+
+        <div id="fp5-instructions" class="instructions" style="display: none">
+          <p>Installation instructions:<p>
+          <ul>
+            <li>
+              Unlock your bootloader:
+              <a href="https://wiki.postmarketos.org/wiki/Fairphone_5_(fairphone-fp5)#Preparing_for_the_installation">
+                Fairphone 5 Preparation
+              </a>
+            </li>
+            <li class="list-separator"></li>
+            <li>
+              Download u-boot image:
+
+              <a href="https://catacombing.org/catacomb/u-boot-fairphone-fp5.img.xz">
+                U-Boot Image
+              </a>
+            </li>
+            <li>
+              Download boot filesystem image:
+
+              <a href="https://catacombing.org/catacomb/alarm-fairphone-fp5-boot.img.xz">
+                Boot Filesystem Image
+              </a>
+            </li>
+            <li>Download root filesystem image ("Download" button above)</li>
+            <li class="list-separator"></li>
+            <li>Enter the bootloader</li>
+            <li class="list-separator"></li>
+            <li>
+              Flash the u-boot image to the <code>boot</code> partition:
+
+              <div class="code">
+                #&gt; xz -d u-boot-fairphone-fp5.img.xz<br/>
+                #&gt; fastboot flash boot u-boot-fairphone-fp5.img
+              </div>
+            </li>
+            <li>
+              Flash the boot filesystem image to the <code>super</code> partition:
+
+              <div class="code">
+                #&gt; xz -d alarm-fairphone-fp5-boot.img.xz<br/>
+                #&gt; fastboot flash super alarm-fairphone-fp5-boot.img
+              </div>
+            </li>
+            <li>
+              Flash the root filesystem image to the <code>userdata</code> partition:
+
+              <div class="code">
+                #&gt; xz -d alarm-fairphone-fp5-root.img.xz<br/>
+                #&gt; fastboot flash userdata alarm-fairphone-fp5-root.img
+              </div>
+            </li>
+            <li class="list-separator"></li>
+            <li>
+              Reboot the device:
+
+              <div class="code">
+                #&gt; fastboot reboot
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div id="pp-instructions" class="instructions" style="display: none">
+          <p>Installation instructions:<p>
+          <div class="code">
+            xzcat image.img.xz | dd of=&lt;eMMC or SD card device&gt; conv=fsync
+          </div>
+        </div>
       </div>
     </div>
 
@@ -253,5 +325,5 @@
     </div>
   </body>
 
-  <script type="text/javascript" src="../js/index.js"></script>
+  <script type="text/javascript" src="../js/builder.js"></script>
 </html>

@@ -67,3 +67,19 @@ body {
 #img-md5sum {
   margin-left: 10px;
 }
+
+.alpha {
+  display: inline-block;
+  color: #f4bf75;
+  margin: unset;
+}
+
+.instructions {
+  padding-top: 50px;
+  text-align: left;
+}
+
+.list-separator {
+  list-style: none;
+  height: 1em;
+}

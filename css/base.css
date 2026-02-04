@@ -35,6 +35,13 @@ code {
     padding: 5px;
 }
 
+.code {
+    font-family: monospace;
+    background: #282828;
+    line-height: 1.5;
+    padding: 5px 25px;
+}
+
 a {
     color: #aaaaaa;
     text-decoration: underline;
@@ -140,8 +147,8 @@ a:hover {
     margin-left: 150px;
 }
 
-.svg-section ul {
-    list-style: square;
+ul {
+  list-style: square;
 }
 
 @media (max-width:1000px)  {

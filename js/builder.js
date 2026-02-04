@@ -133,6 +133,13 @@ async function checkRequestStatus(device, md5sum) {
   case 'done':
     document.getElementById('download-popup').style.display = 'flex';
     document.getElementById('img-md5sum').innerHTML = status.img_md5sum;
+    if (device === 'fairphone-fp5') {
+      document.getElementById('fp5-instructions').style.display = 'block';
+      document.getElementById('pp-instructions').style.display = 'none';
+    } else {
+      document.getElementById('fp5-instructions').style.display = 'none';
+      document.getElementById('pp-instructions').style.display = 'block';
+    }
     break;
   case 'pending':
   case 'building':
