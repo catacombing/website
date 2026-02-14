@@ -26,12 +26,16 @@ function deChanged(input) {
     enableCheckboxes(['camera-megapixels', 'editor-vim'], false);
     break;
   case 'phosh':
-    enableCheckboxes(['osk-squeekboard'], true);
     enableCheckboxes([
       'browser-ff-mobile', 'terminal-gnome', 'editor-gnome', 'clock-gnome', 'calls-gnome',
       'sms-chatty', 'camera-megapixels', 'music-lollypop', 'img-eog', 'fm-portfolio',
       'maps-gnome',
     ], false);
+
+    // Squeekboard conflicts with phosh's Stevia.
+    const squeekboard = document.getElementById('osk-squeekboard');
+    squeekboard.disabled = true;
+    squeekboard.checked = false;
     break;
   case 'plasma':
     enableCheckboxes([
