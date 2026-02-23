@@ -116,7 +116,7 @@ function selected_packages() {
 }
 
 // Get current status of a request.
-async function get_status(device, md5sum) {
+async function getStatus(device, md5sum) {
   const response = await fetch(`https://catacombing.org/isotopia/requests/${device}/${md5sum}/status`);
   if (response.status == 200) {
     const status = await response.json();
@@ -130,7 +130,14 @@ async function get_status(device, md5sum) {
 
 // Check status of a request and show the corresponding popup.
 async function checkRequestStatus(device, md5sum) {
-  const status = await get_status(device, md5sum);
+  const status = await getStatus(device, md5sum);
+
+  // Handle failed builds.
+  if (status?.error) {
+    document.getElementById('error-popup').style.display = 'flex';
+    document.getElementById('error-msg').innerHTML = status.error;
+    return;
+  }
 
   // Open correct popup based on current request state.
   switch (status?.status) {
@@ -167,7 +174,7 @@ async function submit() {
   const md5sum = hex_md5(packages.join(' '));
 
   // Redirect to show popups.
-  const status = await get_status(device, md5sum);
+  const status = await getStatus(device, md5sum);
   switch (status?.status) {
   case 'done':
   case 'pending':
